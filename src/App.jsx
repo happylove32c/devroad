@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(false); // To toggle between login and signup
+
+  // Function to open the modal
+  const openModal = () => setIsModalOpen(true);
+
+  // Function to close the modal
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <main className="min-h-screen bg-[#1b222d] text-white font-sans">
       {/* Navbar */}
@@ -19,7 +28,10 @@ const App = () => {
               Features
             </a>
           </div>
-          <button className="bg-[#ed6054] text-white px-6 py-2 rounded-lg hover:bg-[#d95448] transition">
+          <button
+            onClick={openModal}
+            className="bg-[#ed6054] text-white px-6 py-2 rounded-lg hover:bg-[#d95448] transition"
+          >
             Start Here
           </button>
         </div>
@@ -33,10 +45,16 @@ const App = () => {
           Learn how to learn, what to learn, and where to learn.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <button className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+          <button
+            onClick={openModal}
+            className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
+          >
             Continue
           </button>
-          <button className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+          <button
+            onClick={openModal}
+            className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
+          >
             Get Started
           </button>
         </div>
@@ -86,7 +104,7 @@ const App = () => {
             No pay wall, no subscription, get started free today.
           </p>
         </div>
-        <button className="mt-8 bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+        <button className="mt-8 bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition" onClick={openModal}>
           Get Started
         </button>
       </section>
@@ -112,6 +130,112 @@ const App = () => {
           <path d="m280-400 200-200 200 200H280Z" />
         </svg>
       </button>
+
+      {/* Modal for Sign Up / Login */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={closeModal}
+        >
+          <div
+            className="bg-[#263041] p-8 m-8 rounded-lg w-full max-w-md flex flex-col justify-center items-center"
+            onClick={(e) => e.stopPropagation()} // Prevent close when clicking inside modal
+          >
+            {isLogin ? (
+              <div className="flex flex-col gap-4 w-full">
+                <h2 className="text-3xl text-[#ed6054] font-bold mb-4">Login</h2>
+                {/* Login with Email Form */}
+                <div className="mb-4">
+                  <h3 className="text-xl text-[#ed6054] mb-2">Login with Email</h3>
+                  <form className="flex flex-col gap-4">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="p-3 rounded-lg bg-[#1b222d] border border-gray-300 text-white"
+                    />
+                    <input
+                      type="password"
+                      placeholder="Enter your password"
+                      className="p-3 rounded-lg bg-[#1b222d] border border-gray-300 text-white"
+                    />
+                    <button className="bg-[#ed6054] text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition mt-4">
+                      Login
+                    </button>
+                  </form>
+                </div>
+
+                {/* OR Divider */}
+                <div className="flex items-center text-[#ed6054] mb-4">
+                  <hr className="flex-grow" />
+                  <span className="px-4">OR</span>
+                  <hr className="flex-grow" />
+                </div>
+
+                {/* Login with Google Button */}
+                <button className="bg-[#ed6054] text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+                  Login with Google
+                </button>
+
+                <p
+                  onClick={() => setIsLogin(false)}
+                  className="text-center text-[#ed6054] mt-4 cursor-pointer hover:underline"
+                >
+                  Don't have an account? Sign Up.
+                </p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 w-full">
+                <h2 className="text-3xl text-[#ed6054] font-bold mb-4">Sign Up</h2>
+                {/* Sign Up with Email Form */}
+                <div className="mb-4">
+                  <h3 className="text-xl text-[#ed6054] mb-2">Sign Up with Email</h3>
+                  <form className="flex flex-col gap-4">
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="p-3 rounded-lg bg-[#1b222d] border border-gray-300 text-white"
+                    />
+                    <input
+                      type="password"
+                      placeholder="Enter your password"
+                      className="p-3 rounded-lg bg-[#1b222d] border border-gray-300 text-white"
+                    />
+                    <button className="bg-[#ed6054] text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition mt-4">
+                      Sign Up
+                    </button>
+                  </form>
+                </div>
+
+                {/* OR Divider */}
+                <div className="flex items-center text-[#ed6054] mb-4">
+                  <hr className="flex-grow" />
+                  <span className="px-4">OR</span>
+                  <hr className="flex-grow" />
+                </div>
+
+                {/* Sign Up with Google Button */}
+                <button className="bg-[#ed6054] text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+                  Sign Up with Google
+                </button>
+
+                <p
+                  onClick={() => setIsLogin(true)}
+                  className="text-center text-[#ed6054] mt-4 cursor-pointer hover:underline"
+                >
+                  Already have an account? Login.
+                </p>
+              </div>
+            )}
+
+            <button
+              onClick={closeModal}
+              className="text-[#ed6054] text-center mt-4 hover:underline"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
