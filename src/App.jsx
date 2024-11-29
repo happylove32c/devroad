@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Dashboard from './components/Dashboard'
+import Mainpage from './components/Mainpage'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const App = () => {
@@ -238,7 +239,8 @@ const App = () => {
                 </div>
 
                 {/* Sign Up with Google Button */}
-                <button className="bg-[#ed6054] text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+                <button className="bg-[#ed6054] flex gap-4 items-center justify-center text-white px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
+                  <img src="https://www.svgrepo.com/show/452216/google.svg" alt="" className="h-8" />
                   Sign Up with Google
                 </button>
 
@@ -255,7 +257,7 @@ const App = () => {
               onClick={closeModal}
               className="text-[#ed6054] text-center mt-4 hover:underline"
             >
-              Close
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
             </button>
           </div>
         </div>
@@ -269,6 +271,7 @@ const Root = () => (
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/home" element={< Mainpage/>} />
     </Routes>
   </Router>
 );
