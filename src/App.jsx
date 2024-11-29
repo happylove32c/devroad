@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Dashboard from './components/Dashboard'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,39 +63,61 @@ const App = () => {
       </section>
 
       {/* Sections */}
-      {[
-        {
-          title: "Learn anywhere, learn on the go",
-          text: "Access learning materials from any device, anytime, and stay productive on the move. Turn idle moments into opportunities to grow with mobile-friendly resources.",
-          image: "https://i.pinimg.com/736x/4f/b8/a3/4fb8a337e07decb8a760a11016f61552.jpg",
-        },
-        {
-          title: "Learn well, learn wide",
-          text: "Access carefully selected resources and step-by-step pathways tailored to your growth. Master skills efficiently with structured roadmaps and progress tracking.",
-          image: "https://i.pinimg.com/736x/27/9e/ee/279eeeb94a52e9146a06e7cb32c06fc3.jpg",
-        },
-        {
-          title: "Learn smoothly, learn organized",
-          text: "Follow structured plans that make learning seamless and stress-free. Stay focused with organized resources tailored to your skill development.",
-          image: "https://i.pinimg.com/736x/93/df/15/93df1560097eedb72743d4824ff91fe5.jpg",
-        },
-      ].map((section, index) => (
-        <section
-          key={index}
-          className="section grid lg:grid-cols-2 gap-8 p-8 m-12 items-center"
-        >
-          <div className="flex flex-col gap-8">
-            <h1 className="text-5xl lg:text-[100px] font-bold">{section.title}</h1>
-            <p className="text-xl">{section.text}</p>
-          </div>
-          <div className="relative">
-            <div
-              className="bg-cover bg-no-repeat w-full aspect-square lg:aspect-auto lg:h-[700px] bg-center rounded-lg object-cover"
-              style={{ backgroundImage: `url(${section.image})` }}
-            ></div>
-          </div>
-        </section>
-      ))}
+      <section className="section grid lg:grid-cols-2 gap-8 p-8 m-12 items-center">
+        <div className="flex flex-col gap-8">
+          <h1 className="text-5xl lg:text-[100px] font-bold">Learn anywhere, learn on the go</h1>
+          <p className="text-xl">
+            Access learning materials from any device, anytime, and stay productive on the move. Turn idle moments into opportunities to grow with mobile-friendly resources.
+          </p>
+        </div>
+        <div className="relative">
+          <div
+            className="bg-cover bg-no-repeat w-full aspect-square lg:aspect-auto lg:h-[700px] bg-center rounded-lg object-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.pinimg.com/736x/4f/b8/a3/4fb8a337e07decb8a760a11016f61552.jpg')",
+            }}
+          ></div>
+        </div>
+      </section>
+
+      <section className="section grid lg:grid-cols-2 gap-8 p-8 m-12 items-center">
+      <div className="relative">
+          <div
+            className="bg-cover bg-no-repeat w-full aspect-square lg:aspect-auto lg:h-[700px] bg-center rounded-lg object-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.pinimg.com/736x/27/9e/ee/279eeeb94a52e9146a06e7cb32c06fc3.jpg')",
+            }}
+          ></div>
+        </div>
+        
+        <div className="flex flex-col gap-8">
+          <h1 className="text-5xl lg:text-[100px] font-bold">Learn well, learn wide</h1>
+          <p className="text-xl">
+            Access carefully selected resources and step-by-step pathways tailored to your growth. Master skills efficiently with structured roadmaps and progress tracking.
+          </p>
+        </div>
+      </section>
+
+      <section className="section grid lg:grid-cols-2 gap-8 p-8 m-12 items-center">
+        <div className="flex flex-col gap-8">
+          <h1 className="text-5xl lg:text-[100px] font-bold">Learn smoothly, learn organized</h1>
+          <p className="text-xl">
+            Follow structured plans that make learning seamless and stress-free. Stay focused with organized resources tailored to your skill development.
+          </p>
+        </div>
+        <div className="relative">
+          <div
+            className="bg-cover bg-no-repeat w-full aspect-square lg:aspect-auto lg:h-[700px] bg-center rounded-lg object-cover"
+            style={{
+              backgroundImage:
+                "url('https://i.pinimg.com/736x/93/df/15/93df1560097eedb72743d4824ff91fe5.jpg')",
+            }}
+          ></div>
+        </div>
+      </section>
+
 
       <section className="section h-screen flex flex-col justify-center items-center px-4 text-center">
         <div className="flex flex-col gap-4">
@@ -134,7 +158,7 @@ const App = () => {
       {/* Modal for Sign Up / Login */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 transition-all duration-300 fade-in"
           onClick={closeModal}
         >
           <div
@@ -240,4 +264,13 @@ const App = () => {
   );
 };
 
-export default App;
+const Root = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+  </Router>
+);
+
+export default Root;
