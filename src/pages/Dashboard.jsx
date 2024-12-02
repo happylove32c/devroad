@@ -304,6 +304,46 @@ const Dashboard = () => {
       </div>
 
     </div>
+
+    <div className="bg-[#263041] p-6 mt-5 rounded-lg shadow-lg flex flex-col gap-4">
+  <h3 className="text-xl font-bold text-white">Videos Watched</h3>
+  <div className="grid grid-cols-4 gap-4 text-white font-medium border-b border-gray-500 pb-2">
+    <span>Video Name</span>
+    <span>Length</span>
+    <span>Link to Video</span>
+    <span>Completed</span>
+  </div>
+  {/* Example video entries */}
+  {[
+    { name: "React Basics", length: "10:45", link: "https://example.com/video1", completed: true },
+    { name: "Advanced Hooks", length: "15:30", link: "https://example.com/video2", completed: false },
+    { name: "State Management", length: "20:00", link: "https://example.com/video3", completed: true },
+    { name: "Deploying React Apps", length: "12:15", link: "https://example.com/video4", completed: false },
+  ].map((video, index) => (
+    <div
+      key={index}
+      className="grid grid-cols-4 gap-4 text-white items-center bg-[#1E2835] p-2 rounded-md"
+    >
+      <span>{video.name}</span>
+      <span>{video.length}</span>
+      <a
+        href={video.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-400 underline"
+      >
+        Watch
+      </a>
+      <input
+        type="checkbox"
+        className="w-5 h-5"
+        checked={video.completed}
+        onChange={() => {}}
+      />
+    </div>
+  ))}
+</div>
+
   </div>
 )}
 

@@ -45,6 +45,12 @@ const Homepage = () => {
   return (
     <main className="min-h-screen bg-[#1b222d] text-white font-sans">
       <div className="container mx-auto px-6 py-8">
+      <Link
+          to="/"
+          className="inline-block bg-[#ed6054] text-white shadow-md backdrop-blur-md border border-gray-300 bg-transparent p-4 rounded-full transition mb-4"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+        </Link>
         <h1 className="text-5xl font-bold mb-6 text-center">
           Explore Courses & Resources
         </h1>
