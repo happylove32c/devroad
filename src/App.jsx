@@ -54,12 +54,12 @@ const App = () => {
     >
       Continue
     </button>
-    <a
-      href="/home"
+    <Link
+      to="/home"
       className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
     >
       Get Started
-    </a>
+    </Link>
   </div>
 
   {/* Shooting Lines */}
@@ -162,9 +162,9 @@ const App = () => {
             No pay wall, no subscription, get started free today.
           </p>
         </div>
-        <button className="mt-8 bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition" onClick={openModal}>
+        <Link to="/home" className="mt-8 bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition">
           Get Started
-        </button>
+        </Link>
       </section>
 
       {/* Footer */}
