@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dashboard from './pages/Dashboard'
 import Mainpage from './pages/Mainpage'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate , Link} from "react-router-dom";
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,9 +24,9 @@ const App = () => {
             className="h-12"
           />
           <div className="nav-items hidden md:flex gap-6">
-            <a href="/home" className="text-[#ed6054] hover:underline">
+            <Link to="/home" className="text-[#ed6054] hover:underline">
               Home
-            </a>
+            </Link>
             <a href="#Pricing" className="text-[#ed6054] hover:underline">
               Pricing
             </a>
