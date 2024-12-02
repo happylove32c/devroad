@@ -47,7 +47,7 @@ const Homepage = () => {
       <div className="container mx-auto px-6 py-8">
       <Link
           to="/"
-          className="inline-block bg-[#ed6054] text-white shadow-md backdrop-blur-md border border-gray-300 bg-transparent p-4 rounded-full transition mb-4"
+          className="inline-block bg-[#ed6054] sticky top-0 z-50 text-white shadow-md backdrop-blur-md border border-gray-300 bg-transparent p-4 rounded-full transition mb-4"
         >
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
         </Link>
