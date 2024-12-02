@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Dashboard from './components/Dashboard'
-import Mainpage from './components/Mainpage'
+import Dashboard from './pages/Dashboard'
+import Mainpage from './pages/Mainpage'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <main className="min-h-screen bg-[#1b222d] text-white font-sans">
+    <main className="min-h-screen bg-[#1b222d] text-white font-sans" style={{ scrollBehavior: "smooth" }}>
       {/* Navbar */}
       <div className="navbar sticky top-0 bg-transparent backdrop-blur-md shadow-lg z-50">
         <div className="container mx-auto flex justify-between items-center px-6 py-4">
@@ -24,11 +24,11 @@ const App = () => {
             className="h-12"
           />
           <div className="nav-items hidden md:flex gap-6">
-            <a href="#" className="text-[#ed6054] hover:underline">
+            <a href="/home" className="text-[#ed6054] hover:underline">
               Home
             </a>
-            <a href="#Features" className="text-[#ed6054] hover:underline">
-              Features
+            <a href="#Pricing" className="text-[#ed6054] hover:underline">
+              Pricing
             </a>
           </div>
           <button
@@ -41,27 +41,60 @@ const App = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="hero flex flex-col justify-center items-center text-center h-screen px-4">
-        <h1 className="text-5xl lg:text-[100px] font-bold">Hello There!</h1>
-        <p className="text-2xl mt-4">Welcome to devroad</p>
-        <p className="text-xl mt-4">
-          Learn how to learn, what to learn, and where to learn.
-        </p>
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={openModal}
-            className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
-          >
-            Continue
-          </button>
-          <button
-            onClick={openModal}
-            className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
-          >
-            Get Started
-          </button>
-        </div>
-      </section>
+      <section className="hero relative flex flex-col justify-center items-center text-center h-screen px-4 overflow-hidden">
+  <h1 className="text-5xl lg:text-[100px] font-bold z-10">Hello There!</h1>
+  <p className="text-2xl mt-4 z-10">Welcome to devroad</p>
+  <p className="text-xl mt-4 z-10">
+    Learn how to learn, what to learn, and where to learn.
+  </p>
+  <div className="mt-8 flex flex-col sm:flex-row gap-4 z-10">
+    <button
+      onClick={openModal}
+      className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
+    >
+      Continue
+    </button>
+    <a
+      href="/home"
+      className="bg-[#ed6054] px-6 py-3 rounded-lg hover:bg-[#d95448] transition"
+    >
+      Get Started
+    </a>
+  </div>
+
+  {/* Shooting Lines */}
+  <div className="absolute inset-0 overflow-hidden">
+    {/* Horizontal Lines */}
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={`h-${i}`}
+        className={`shooting-line-horizontal ${
+          i % 3 === 0 ? "bg-orange-500" : i % 3 === 1 ? "bg-blue-500" : "bg-green-500"
+        }`}
+        style={{
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${3 + Math.random() * 5}s`,
+          top: `${Math.random() * 100}%`,
+        }}
+      ></div>
+    ))}
+    {/* Vertical Lines */}
+    {Array.from({ length: 10 }).map((_, i) => (
+      <div
+        key={`v-${i}`}
+        className={`shooting-line-vertical ${
+          i % 3 === 0 ? "bg-orange-500" : i % 3 === 1 ? "bg-blue-500" : "bg-green-500"
+        }`}
+        style={{
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${3 + Math.random() * 5}s`,
+          left: `${Math.random() * 100}%`,
+        }}
+      ></div>
+    ))}
+  </div>
+</section>
+
 
       {/* Sections */}
       <section className="section grid lg:grid-cols-2 gap-8 p-8 m-12 items-center">
@@ -120,10 +153,10 @@ const App = () => {
       </section>
 
 
-      <section className="section h-screen flex flex-col justify-center items-center px-4 text-center">
+      <section id="Pricing" className="section h-screen flex flex-col justify-center items-center px-4 text-center">
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl lg:text-[100px] font-bold">
-            Learn early, learn now
+            Learn Free, learn now
           </h1>
           <p className="text-xl">
             No pay wall, no subscription, get started free today.
