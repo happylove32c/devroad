@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dashboard from './pages/Dashboard'
 import Mainpage from './pages/Mainpage'
 import { Auth } from "@supabase/auth-ui-react"; // Supabase Auth component
 import { ThemeSupa } from "@supabase/auth-ui-shared"; // Supabase theme
 import { createClient } from "@supabase/supabase-js"; // Supabase client
-import { BrowserRouter as Router, Routes, Route, useNavigate , Link} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate , Link, data} from "react-router-dom"
 
 const supabase = createClient(
   "https://jrbdjqslhqvgbweymfcz.supabase.co",
@@ -12,6 +12,16 @@ const supabase = createClient(
 );
 
 const App = () => {
+  
+  useEffect(() => {
+    const check = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      console.log(data);
+    }
+    check()
+  }, [/* add a dependency here, e.g. supabase.auth */])
+
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false); // To toggle between login and signup
 
